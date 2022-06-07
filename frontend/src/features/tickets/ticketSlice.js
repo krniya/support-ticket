@@ -10,7 +10,7 @@ const initialState = {
     message: "",
 };
 
-export const createTicket = createAsyncThunk("tickets/create", async (ticketData, thunkAPI) => {
+export const createTicket = createAsyncThunk("/tickets/create", async (ticketData, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token;
         return await ticketService.createTicket(ticketData, token);
@@ -23,7 +23,7 @@ export const createTicket = createAsyncThunk("tickets/create", async (ticketData
     }
 });
 
-export const getTickets = createAsyncThunk("tickets/getAll", async (_, thunkAPI) => {
+export const getTickets = createAsyncThunk("/tickets/getAll", async (_, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token;
         return await ticketService.getTickets(token);
@@ -36,7 +36,7 @@ export const getTickets = createAsyncThunk("tickets/getAll", async (_, thunkAPI)
     }
 });
 
-export const getTicket = createAsyncThunk("tickets/get", async (ticketId, thunkAPI) => {
+export const getTicket = createAsyncThunk("/tickets/get", async (ticketId, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token;
         return await ticketService.getTicket(ticketId, token);
@@ -49,7 +49,7 @@ export const getTicket = createAsyncThunk("tickets/get", async (ticketId, thunkA
     }
 });
 
-export const closeTicket = createAsyncThunk("tickets/close", async (ticketId, thunkAPI) => {
+export const closeTicket = createAsyncThunk("/tickets/close", async (ticketId, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token;
         return await ticketService.closeTicket(ticketId, token);

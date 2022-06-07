@@ -13,7 +13,7 @@ function Ticket() {
     const params = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { ticketId } = useParams;
+    const { ticketId } = useParams();
     useEffect(() => {
         if (isError) {
             toast.error(message);
