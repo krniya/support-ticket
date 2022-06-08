@@ -6,8 +6,8 @@ import Modal from "react-modal";
 import BackButton from "../components/BackButton";
 import NoteItem from "../components/NoteItem";
 import Spinner from "../components/Spinner";
-import { getNotes, reset as noteReset } from "../features/notes/noteSlice";
-import { closeTicket, getTicket, reset } from "../features/tickets/ticketSlice";
+import { createNote, getNotes } from "../features/notes/noteSlice";
+import { closeTicket, getTicket } from "../features/tickets/ticketSlice";
 import { FaPlus } from "react-icons/fa";
 
 const customStyles = {
@@ -28,11 +28,8 @@ Modal.setAppElement("#root");
 function Ticket() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [noteText, setNoteText] = useState("");
-    const { ticket, isLoading, isSuccess, isError, message } = useSelector(
-        (state) => state.tickets
-    );
+    const { ticket, isLoading, isError, message } = useSelector((state) => state.tickets);
     const { notes, isLoading: notesIsLoading } = useSelector((state) => state.notes);
-    const params = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { ticketId } = useParams();
@@ -58,7 +55,7 @@ function Ticket() {
     // Create Note submit
     const onNoteSubmit = (e) => {
         e.preventDefault();
-        console.log("submit");
+        dispatch(createNote({ noteText, ticketId }));
         closeModal();
     };
 
