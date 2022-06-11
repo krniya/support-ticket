@@ -1,6 +1,6 @@
 # Support Ticket
 
-A MERN based web application used for manage tickets about a specific product and helps user and org to resolve issues.
+A MERN-based web application used for managing tickets related to issues with a specific product and helps users and product support employees to communicate with each other and resolve the issues.
 
 ## Authors
 
